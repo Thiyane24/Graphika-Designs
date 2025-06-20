@@ -8,6 +8,21 @@
   <meta name="author" content="Graphika Designs">
   <link rel="stylesheet" href="style.css" />
 </head>
+<script>
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('animar');
+        observador.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(secao => {
+    observador.observe(secao);
+  });
+</script>
+
 <body>
   <header class="hero-banner">
     <div class="nav-container">
@@ -52,6 +67,8 @@
         </figure>
       </div>
     </section>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
 
     <section class="testemunhos">
       <h3>O que dizem sobre nós</h3>
@@ -62,11 +79,21 @@
       </div>
     </section>
 
-    <section id="contato" class="contato">
-      <h3>Bora fazer parte da familía?</h3>
-      <p>Mais de 30 atletas confiam na nossa criatividade visual. Junte-se a nós agora.</p>
-      <a href="https://wa.me/258821346210" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">📲 Falar com a Graphika</a>
-    </section>
+   <section id="contato" class="contato">
+  <h3>Bora fazer parte da familía?</h3>
+  <p>Mais de 30 atletas confiam na nossa criatividade visual. Preencha o formulário e entraremos em contato.</p>
+
+  <form action="https://formspree.io/f/mvonyzje" method="POST" class="formulario">
+    <input type="text" name="nome" placeholder="Seu nome" required>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p class="ou">ou se preferir:</p>
+  <a href="https://wa.me/258821346210" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">📲 Falar com a Graphika</a>
+</section>
+
   </main>
 
   <footer>
